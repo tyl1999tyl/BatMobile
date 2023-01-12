@@ -23,7 +23,7 @@ def getLaneCurve(img,display=2):
 
     # STEP 3 : Pixel summation and getting the curve (direction)
     midPoint, imgHist = utils.getHistogram(imgWarp,display=True,minVal=0.5,region=4)
-    basePoint, imgHist = utils.getHistogram(imgWarp,display=True,minVal=0.9,region=1)
+    basePoint, imgHist1 = utils.getHistogram(imgWarp,display=True,minVal=0.9,region=1)
     curveRaw = basePoint - midPoint
 
     # STEP 4 : Calculating the curve angle 
@@ -87,9 +87,9 @@ def getLaneCurve(img,display=2):
 
 
 if __name__ == '__main__':
-    cap = cv2.VideoCapture('IMG_5787.MOV')
+    cap = cv2.VideoCapture('video.h264')
 
-    intialTrackbarVals = [137,0,100,240]
+    intialTrackbarVals = [102,0,100,240]
     utils.initializeTrackbars(intialTrackbarVals)
     frameCounter = 0
     while True:

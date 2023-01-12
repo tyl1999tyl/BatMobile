@@ -1,3 +1,5 @@
+import argparse
+
 # Recursive function to print the path of given vertex `u` from source vertex `v`
 def printPath(path, v, u, route):
     if path[v][u] == v:
@@ -6,9 +8,17 @@ def printPath(path, v, u, route):
     route.append(path[v][u])
  
  
+def get_shortest_path(routes,start,end):
+    for start_node,end_node,path in routes:
+        if start_node==start and end_node==end:
+            return path
+
 # Function to print the shortest cost with path
 # information between all pairs of vertices
 def printSolution(path, n):
+
+    all_shortest_path = []
+
     for v in range(n):
         for u in range(n):
             if u != v and path[v][u] != -1:
@@ -17,11 +27,13 @@ def printSolution(path, n):
                 route.append(u)
                 route_l =  [x+1 for x in route]
                 
-                print(f'The shortest path from {v+1} —> {u+1} is', route_l)
+                #print(f'The shortest path from {v+1} —> {u+1} is', route_l)
+                all_shortest_path.append([v+1,u+1,route_l])
+    return all_shortest_path
  
  
 # Function to run the Floyd–Warshall algorithm
-def floydWarshall(adjMatrix):
+def floydWarshall(adjMatrix, start, end):
  
     # base case
     if not adjMatrix:
@@ -65,9 +77,20 @@ def floydWarshall(adjMatrix):
                 return
  
     # Print the shortest path between all pairs of vertices
-    printSolution(path, n)
+    all_shortest_path = printSolution(path, n)
+
+    return get_shortest_path(all_shortest_path,start,end)
     
 if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+    # Add an argument
+    parser.add_argument('-s','--start', type=int, required=True)
+    parser.add_argument('-e','--end', type=int, required=True)
+
+    # Parse the argument
+    args = parser.parse_args()
+
 
     # define infinity
     I = float('inf')
@@ -88,4 +111,5 @@ if __name__ == '__main__':
     ]
 
     # Run Floyd–Warshall algorithm
-    floydWarshall(adjMatrix)
+    optimized_path = floydWarshall(adjMatrix,args.start,args.end)
+    print(optimized_path)

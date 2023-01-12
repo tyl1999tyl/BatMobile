@@ -12,6 +12,10 @@ def warpImg(img,points,w,h,inv=False):
     pts1 = np.float32(points)
     pts2 = np.float32([[0,0],[w,0],[0,h],[w,h]])
     matrix = cv2.getPerspectiveTransform(pts2,pts1)
+    if inv:
+        matrix = cv2.getPerspectiveTransform(pts2,pts1)
+    else:
+        matrix = cv2.getPerspectiveTransform(pts1,pts2)
     imgWarp = cv2.warpPerspective(img,matrix,(w,h))
     return imgWarp
 
@@ -103,9 +107,14 @@ def isGoalReached(img, threshold=5000):
 
     contours, hierarchy = cv2.findContours(maskRed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     # Find the largest contour
-    largest_contour = max(contours, key=lambda x:cv2.contourArea(x))
+    if len(contours)!=0:
+        largest_contour = max(contours, key=lambda x:cv2.contourArea(x))
+        if cv2.contourArea(largest_contour) > threshold:
+            return True
+        else:
+            return False
+            
     #print( cv2.contourArea(largest_contour))
-    if cv2.contourArea(largest_contour) > threshold:
-        return True
+    
     return False
 

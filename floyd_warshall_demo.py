@@ -81,6 +81,7 @@ def floydWarshall(adjMatrix, start, end):
 
     return get_shortest_path(all_shortest_path,start,end)
     
+"""
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
@@ -105,7 +106,7 @@ if __name__ == '__main__':
         [I, I, I, 5, I, 0, 6, I, I, I],
         [I, I, I, I, I, 6, 0, 3, I, I],
         [I, I, I, I, I, I, 3, 0, 1, I],
-        [I, I, I, I, I, I, I, 1, 0, 1],
+        [I, 7, I, I, I, I, I, 1, 0, 1],
         [I, I, I, I, I, I, I, I, 1, 0],
 
     ]
@@ -113,3 +114,4 @@ if __name__ == '__main__':
     # Run Floyd–Warshall algorithm
     optimized_path = floydWarshall(adjMatrix,args.start,args.end)
     print(optimized_path)
+    """

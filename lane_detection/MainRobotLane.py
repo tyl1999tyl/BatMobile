@@ -1,14 +1,16 @@
-from MotorModule import Motor
-from LaneModule import getLaneCurve
+#from MotorModule import Motor
+from LaneDetectionModule import getLaneCurve
 import WebcamModule
+import utils
 #import cv2
 
 ##################################################
-motor = Motor(2,3,4,17,22,27)
+#motor = Motor(2,3,4,17,22,27)
 ##################################################
  
 def main():
- 
+    intialTrackbarVals = [102,0,100,240]
+    utils.initializeTrackbars(intialTrackbarVals)
     # get image from webcam
     img = WebcamModule.getImg()
 
@@ -30,7 +32,14 @@ def main():
         if curveVal<0.05: curveVal=0
     else:
         if curveVal>-0.08: curveVal=0
-    motor.move(0.20,-curveVal*sen,0.05) # move the car according to the curve
+    
+    if curveVal>0:
+        print("turn right")
+    if curveVal<0:
+        print("turn_left")
+    if curveVal==0:
+        print("Forward")
+    #motor.move(0.20,-curveVal*sen,0.05) # move the car according to the curve
     #cv2.waitKey(1)
      
  

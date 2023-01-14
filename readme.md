@@ -13,7 +13,7 @@ possible. The algorithm that we are using to find the shortest distance is a pat
 called Floyd–Warshall.
 Below shows an example of the farm and its distance matrix:
 
-![Image][https://github.com/tyl1999tyl/BatMobile/blob/main/images/example_farm.png]
+![Farm_example](https://github.com/tyl1999tyl/BatMobile/blob/main/images/example_farm.png)
 
 - The numbers in dark purple and circled are the nodes (a.k.a location of the crops). They are the
 location that the robot car needs to reach.

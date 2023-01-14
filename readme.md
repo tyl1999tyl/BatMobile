@@ -23,15 +23,18 @@ A demo of the algorithm in working is in floyd_warshall_demo.py. The distance ma
 and when the algorithm is run, we can get the shortest path that the robot needs to go through to get
 from node A to node B. Example output:
 
-The shortest path from 1 —> 2 is [1, 2]
-The shortest path from 1 —> 3 is [1, 2, 3]
-The shortest path from 1 —> 4 is [1, 2, 3, 4]
-The shortest path from 1 —> 5 is [1, 2, 3, 4, 5]
-The shortest path from 1 —> 6 is [1, 2, 3, 4, 6]
-The shortest path from 1 —> 7 is [1, 2, 9, 8, 7]
-The shortest path from 1 —> 8 is [1, 2, 9, 8]
-The shortest path from 1 —> 9 is [1, 2, 9]
-The shortest path from 1 —> 10 is [1, 2, 9, 10]
+```
 
+The shortest path from 1 -> 2 is [1, 2] 
+The shortest path from 1 -> 3 is [1, 2, 3]
+The shortest path from 1 -> 4 is [1, 2, 3, 4]
+The shortest path from 1 -> 5 is [1, 2, 3, 4, 5]
+The shortest path from 1 -> 6 is [1, 2, 3, 4, 6]
+The shortest path from 1 -> 7 is [1, 2, 9, 8, 7]
+The shortest path from 1 -> 8 is [1, 2, 9, 8]
+The shortest path from 1 -> 9 is [1, 2, 9]
+The shortest path from 1 -> 10 is [1, 2, 9, 10]
+
+```
 
 

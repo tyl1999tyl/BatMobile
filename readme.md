@@ -37,4 +37,16 @@ The shortest path from 1 -> 10 is [1, 2, 9, 10]
 
 ```
 
+Run the below command to start the robot, start and end node needs to be specified in the arguments:
 
+'''
+python MainRobotLane.py --start 1 --end 6
+
+'''
+
+To run demo version of Lane and Goal detection algorithm:
+
+'''
+python LaneDetectionModule.py 
+
+'''

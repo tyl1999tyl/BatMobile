@@ -81,7 +81,7 @@ def getLaneCurve(img,display=2):
 
     elif display == 1:
         cv2.imshow('Result',imgResult)
-        cv2.waitKey(1)
+
 
     curve = curve / 100
     if curve >1:
@@ -105,7 +105,7 @@ def getLaneCurve(img,display=2):
 
 if __name__ == '__main__':
     
-    cap = cv2.VideoCapture("videos/video5.h264")
+    cap = cv2.VideoCapture("videos/video3.h264")
 
     #intialTrackbarVals = [137,0,100,240]
     #utils.initializeTrackbars(intialTrackbarVals)
@@ -113,14 +113,16 @@ if __name__ == '__main__':
     while True:
    
         frameCounter +=1
-        if cap.get(cv2.CAP_PROP_FRAME_COUNT) ==frameCounter:
-           cap.set(cv2.CAP_PROP_POS_FRAMES,0)
-           frameCounter=0
+        #if cap.get(cv2.CAP_PROP_FRAME_COUNT) ==frameCounter:
+        #   cap.set(cv2.CAP_PROP_POS_FRAMES,0)
+        #   frameCounter=0
 
-        _, img = cap.read() # GET THE IMAGE
+        ret, img = cap.read() # GET THE IMAGE
         img = cv2.resize(img,(640,480)) # RESIZE
-        #img = cv2.flip(img, 0)
+        img = cv2.flip(img, 0)
         getLaneCurve(img)
         #cv2.imshow('Vid',img)
         #cv2.resizeWindow('Vid', 500, 300)
+    out.release()
+
 

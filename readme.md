@@ -41,12 +41,10 @@ Run the below command to start the robot, start and end node needs to be specifi
 
 ```
 python MainRobotLane.py --start 1 --end 6
-
 ```
 
 To run demo version of Lane and Goal detection algorithm:
 
 ```
 python LaneDetectionModule.py 
-
 ```

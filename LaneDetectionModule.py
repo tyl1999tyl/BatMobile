@@ -24,7 +24,7 @@ def getLaneCurve(img,display=2):
     hT=240
     points = np.float32([(widthTop, heightTop), (wT-widthTop, heightTop),
                       (widthBottom , heightBottom ), (wT-widthBottom, heightBottom)])
-    imgWarp = utils.warpImg(imgThres,points,w,h,inv=True)
+    imgWarp = utils.warpImg(imgThres,points,w,h,inv=False)
     imgWarpPoints = utils.drawPoints(imgCopy,points)
 
     # STEP 3 : Pixel summation and getting the curve (direction)

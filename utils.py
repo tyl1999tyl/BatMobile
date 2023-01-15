@@ -3,10 +3,21 @@ import numpy as np
 
 def thresholding (img):
     imgHSV = cv2.cvtColor(img,cv2.COLOR_BGR2HSV)
+    # black / blue for the lane
     lowerBlack = np.array([60,0,0])
     upperBlack = np.array([255,255,255])
+    # red for the goal
+    lower_red = np.array([160,140,50]) 
+    upper_red = np.array([180,255,255])
+
+    # create the respective mask 
+    maskRed = cv2.inRange(imgHSV, lower_red, upper_red)
     maskBlack = cv2.inRange(imgHSV, lowerBlack,upperBlack)
-    return maskBlack
+
+    ## final mask and masked
+    maskCombined = cv2.bitwise_or(maskBlack, maskRed)
+    #target = cv2.bitwise_and(img,img, mask=maskCombined)
+    return maskCombined
 
 def warpImg(img,points,w,h,inv=False):
     pts1 = np.float32(points)
